@@ -1,0 +1,45 @@
+### This is the main way to configure the application (other than annotations).
+### This file is in Yaml format but you can also configure spring boot using the traditional
+### Java properties file format.
+
+spring.jmx:
+   enabled: false
+
+spring.datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/walmart
+    username: root
+    password: admin
+server:
+  port: 8090
+
+#todo: make sure to always enable security in production
+security:
+  basic:
+    enabled: false
+
+#management endpoints on a separate port
+management:
+  port: 8091
+  security:
+    enabled: false # management port is internal only. no need to secure it.
+
+---
+spring:
+  mvc.view:
+    prefix: /
+    suffix: .jsp
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+    database: mysql
+  messages:
+    basename: validation
+
+
+
+logging:
+  file: boot_example.log
+  org.hibernate: INFO
+
